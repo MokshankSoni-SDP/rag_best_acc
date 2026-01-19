@@ -32,6 +32,13 @@ def load_and_structure_file(file_path):
         elif file_ext == ".docx":
             from unstructured.partition.docx import partition_docx
             elements = partition_docx(filename=str(file_path))
+
+        # [NEW] Image Support
+        elif file_ext in [".jpg", ".jpeg", ".png"]:
+            from unstructured.partition.image import partition_image
+            print("   👉 Using Image Partitioner (OCR)...")
+            elements = partition_image(filename=str(file_path))
+
         else:
             print(f"❌ Unsupported format: {file_ext}")
             return []

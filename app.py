@@ -31,9 +31,9 @@ if "processed_file" not in st.session_state:
 # --- SIDEBAR: FILE UPLOAD & PROCESSING ---
 with st.sidebar:
     st.header("📂 Knowledge Base")
-    st.write("Upload a PDF, DOCX, or TXT file to chat with it.")
+    st.write("Upload a PDF, DOCX, TXT, or Image (PNG/JPG) to chat.")
     
-    uploaded_file = st.file_uploader("Upload Document", type=["pdf", "txt", "docx"])
+    uploaded_file = st.file_uploader("Upload Document", type=["pdf", "txt", "docx", "png", "jpg", "jpeg"])
     
     if uploaded_file and uploaded_file.name != st.session_state.processed_file:
         with st.spinner("🚀 Processing file... (Ingesting -> Chunking -> Indexing)"):
@@ -127,7 +127,11 @@ if prompt := st.chat_input("Ask a question about your document..."):
     You are a careful and factual assistant.
     
     Your task is to answer the user's question using ONLY the provided context.
-    You must follow these rules strictly:
+    
+    CRITICAL INSTRUCTION:
+    Before answering, you must THINK STEP BY STEP to analyze the context.
+    
+    Follow these rules strictly:
     
     1. Use ONLY the information present in the context.
     2. If the answer is not explicitly stated in the context, respond with:

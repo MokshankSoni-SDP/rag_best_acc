@@ -33,7 +33,11 @@ def generate_answer(query):
     You are a careful and factual assistant.
     
     Your task is to answer the user's question using ONLY the provided context.
-    You must follow these rules strictly:
+    
+    CRITICAL INSTRUCTION:
+    Before answering, you must THINK STEP BY STEP to analyze the context.
+    
+    Follow these rules strictly:
     
     1. Use ONLY the information present in the context.
     2. If the answer is not explicitly stated in the context, respond with:
